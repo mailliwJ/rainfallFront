@@ -103,7 +103,7 @@ def retrain():
                     
                     with right_table:
                         st.markdown('Updated Dataset Metrics')
-                        st.dataframe(result['Updated Dataset Evaluation Metrics'])
+                        st.dataframe(result['New Evaluation Metrics'])
 
                     if st.button('Save Dataset and Retrain Model'):
                         with st.spinner('Saving data and retraining model...'):
