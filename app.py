@@ -88,7 +88,7 @@ def retrain():
 
         if st.button('Retrain & Evaluate'):
             with st.spinner('Retraining model and evaluating...'):
-                file = {'file': upload_file}
+                file = {'file': ('new_data.csv', upload_file, 'text/csv')}
                 result = make_request('POST', RETRAIN_SAVE_URL, files=file)
 
                 if result:
