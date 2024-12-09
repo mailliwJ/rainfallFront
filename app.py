@@ -51,7 +51,6 @@ def predict():
     mean_temp = st.number_input('Mean Temperature (oC)', min_value=-50, max_value=50)
     min_temp = st.number_input('Min Temperature (oC)', min_value=-50, max_value=50)
     pressure = st.number_input('Pressure (kPa)', min_value=0, max_value=500)
-    snow_depth = st.number_input('Snow Depth (cm)', min_value=0, max_value=250)
 
     if st.button('Predict Rainfall'):
         payload = {
@@ -62,7 +61,6 @@ def predict():
             'mean_temp': mean_temp,
             'min_temp': min_temp,
             'pressure': pressure,
-            'snow_depth': snow_depth
         }
 
         with st.spinner('Making prediction...'):
