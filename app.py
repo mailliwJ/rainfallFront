@@ -60,8 +60,8 @@ def predict():
             'max_temp': max_temp,
             'mean_temp': mean_temp,
             'min_temp': min_temp,
-            'pressure': pressure,
-        }
+            'pressure': pressure
+            }
 
         with st.spinner('Making prediction...'):
             result = make_request('POST', PREDICT_URL, json=payload)
