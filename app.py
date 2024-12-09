@@ -82,13 +82,13 @@ def retrain():
     st.write(f'Upload a CSV file containing the latest climatic data\nRetrain the model and then compare the performance metrics')
 
     upload_file = st.file_uploader('Choose a CSV file to upload', type='csv')
+    file = {'file': ('new_data.csv', upload_file, 'text/csv')}
 
     if upload_file is not None:
         st.write('File uploaded successfully. Click "Retrain & Evaluate"')
 
         if st.button('Retrain & Evaluate'):
             with st.spinner('Retraining model and evaluating...'):
-                file = {'file': ('new_data.csv', upload_file, 'text/csv')}
                 result = make_request('POST', RETRAIN_SAVE_URL, files=file)
 
                 if result:
