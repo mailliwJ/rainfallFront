@@ -51,6 +51,7 @@ def home():
     1. **Predict**:
     - Navigate to the ***Predict*** page using the sidebar.
     - Enter values for the required climatic parameters and click ***'Predict Rainfall'***.
+    
     2. **Retrain Model**:
     - Navigate to the **Retrain Model** page using the sidebar.
     - Upload a CSV file containing new training data to retrain the model.
