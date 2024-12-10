@@ -44,30 +44,22 @@ def home():
     st.title('Welcome to RainFall')
 
     st.markdown("""
-             This application is designed to predict rainfall based on a set of climatic parameters.  
-             You can also retrain the prediction model using new data saved as a CSV file.
+    This application is designed to predict rainfall based on a set of climatic parameters.  
+    You can also retrain the prediction model using new data saved as a CSV file.
 
-             ### How to use RainFall:
-             1. **Predict**:
-                - Navigate to the ***Predict*** page using the sidebar.
-                - Enter values for the required climatic parameters and click ***'Predict Rainfall'***.
-             2. **Retrain Model**:
-                - Navigate to the **Retrain Model** page using the sidebar.
-                - Upload a CSV file containing new training data to retrain the model.
-                - For details of the required structure of the CSV file, see below.
-             
-             ### Example CSV File
-             To retrain the model you should upload a CSV file that has the following headers:
-             date,cloud_cover,sunshine,global_radiation,max_temp,mean_temp,min_temp,precipitation,pressure,snow_depth
-             
-             An example dataset for retraining:
-
-|date    |cloud_cover|sunshine|global_radiation|max_temp|mean_temp|min_temp|precipitation|pressure|snow_depth|
-|--------|-----------|--------|----------------|--------|---------|--------|-------------|--------|----------|
-|19790101|2.0        |7.0     |52.0            |2.3     |-4.1     |-7.5    |0.4          |101900  |9.0       |
-|19790102|6.0        |1.7     |27.0            |1.6     |-2.6     |-7.5    |0.0          |102530  |8.0       |
-
-             """)
+    ### How to use RainFall:
+    1. **Predict**:
+    - Navigate to the ***Predict*** page using the sidebar.
+    - Enter values for the required climatic parameters and click ***'Predict Rainfall'***.
+    2. **Retrain Model**:
+    - Navigate to the **Retrain Model** page using the sidebar.
+    - Upload a CSV file containing new training data to retrain the model.
+    - For details of the required structure of the CSV file, see below.
+    
+    ### Example CSV File
+    To retrain the model you should upload a CSV file that has the following headers:
+    date,cloud_cover,sunshine,global_radiation,max_temp,mean_temp,min_temp,precipitation,pressure,snow_depth
+    """)
 
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
