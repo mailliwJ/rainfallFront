@@ -3,4 +3,4 @@ primaryColor = '#b488fb'                #
 backgroundColor = '#f4f1fc'             # background
 secondaryBackgroundColor = '#d2c9ea'    # sidebar and input bars
 textColor = '#2e1e60'
-font = 'monospace'
+font = 'sans serif'
