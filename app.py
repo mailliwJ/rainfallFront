@@ -43,7 +43,7 @@ def home():
     st.title('Welcome to RainFall')
 
     st.markdown("""
-             This application is designed to predict rainfall based on a set of climatic parameters.
+             This application is designed to predict rainfall based on a set of climatic parameters.  
              You can also retrain the prediction model using new data saved as a CSV file.
 
              ### How to use RainFall:
