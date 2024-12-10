@@ -85,12 +85,12 @@ def retrain():
 
         if st.button('Retrain & Evaluate'):
             with st.spinner('Retraining model and evaluating...'):
-                result = make_request('POST', RETRAIN_SAVE_URL, files=file)
+                result = make_request('POST', RETRAIN_SAVE_URL, files=file, params={'action':'evaluate'})
 
                 if result:
                     st.success('Model retrained and evaluated')
                     
-                    st.subheader('Metric Evaluations')
+                    st.subheader('Evaluation Metrics')
                     
                     left_table, right_table = st.columns(2)
                     with left_table:
@@ -103,7 +103,7 @@ def retrain():
 
                     if st.button('Save Dataset and Retrained Model'):
                         with st.spinner('Saving data and retraining model...'):
-                            save_result = make_request('PUT', RETRAIN_SAVE_URL, files=file)
+                            save_result = make_request('POST', RETRAIN_SAVE_URL, files=file, params={'action':'save'})
                             if save_result:
                                 st.success('Dataset and model saved successfully.')
                             else:
