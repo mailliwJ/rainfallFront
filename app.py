@@ -57,7 +57,8 @@ def home():
     - For details of the required structure of the CSV file, see below.
     
     ### Example CSV File
-    To retrain the model you should upload a CSV file that has the following headers:
+    To retrain the model you should upload a CSV file that has the following header line:
+    
     date,cloud_cover,sunshine,global_radiation,max_temp,mean_temp,min_temp,precipitation,pressure,snow_depth
     """)
 
