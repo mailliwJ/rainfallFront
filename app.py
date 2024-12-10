@@ -40,6 +40,9 @@ def main():
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def home():
+
+    st.set_page_config(layout='wide')
+    
     st.title('Welcome to RainFall')
 
     st.markdown("""
@@ -72,8 +75,8 @@ def home():
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def predict():
-    st.title('Make a rainfall predictions')
-    st.markdown('Enter climatic paramters to predict rainfall in mm')
+    st.title('Make a rainfall prediction')
+    st.markdown('Enter values for the climatic paramters to predict rainfall in mm')
 
     cloud_cover = st.number_input('Cloud Cover (oktas)', min_value=0, max_value=500)
     sunshine = st.number_input('Sunshine (hours)', min_value=0, max_value=24)
