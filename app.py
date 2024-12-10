@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 from requests import request
 from requests.exceptions import RequestException
@@ -107,11 +108,11 @@ def retrain():
             left_table, right_table = st.columns(2)
             with left_table:
                 st.markdown('Current Model Metrics')
-                st.table(st.session_state['current_metrics'])
+                st.dataframe(pd.DataFrame(st.session_state['current_metrics']))
                     
             with right_table:
                 st.markdown('Updated Dataset Metrics')
-                st.table(st.session_state['new_metrics'])
+                st.dataframe(pd.DataFrame(st.session_state['new_metrics']))
 
             if st.button('Save Dataset and Retrained Model'):
                 with st.spinner('Saving data and retraining model...'):
