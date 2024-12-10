@@ -30,13 +30,11 @@ def main():
     st.title('Rainfall Prediction Application')
     st.sidebar.title('')
 
-    menu = st.sidebar.radio('Menu', ['Predict', 'Forecast', 'Retrain Model'])
+    menu = st.sidebar.radio('Menu', ['Predict', 'Retrain Model'])
     if menu == "Predict":
         predict()
     elif menu == 'Retrain Model':
         retrain()
-    elif menu == "Forecast":
-        st.write('Forecast feature coming soon')
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
