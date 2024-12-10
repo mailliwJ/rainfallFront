@@ -114,18 +114,21 @@ def retrain():
                 st.markdown('Updated Dataset Metrics')
                 st.dataframe(st.session_state['new_metrics'], hide_index=True, column_order=['Model','MSE','RMSE','MAPE'])
 
-            if st.button('Save Dataset and Retrained Model'):
-                with st.spinner('Saving data and retraining model...'):
-                    file = {'file': ('uploaded_file', st.session_state['uploaded_file'])}
-                    save_result = make_request('POST', RETRAIN_SAVE_URL, files=file, params={'action':'save'})
-                    
-                    if save_result:
-                        st.success('Dataset and model saved successfully.')
-                    else:
-                        st.error('Failed to save updated model and dataset')
-
-        elif st.button('Reject Updates'):
-            st.warning('Updates rejected. Original model and dataset preserved')
+            l_button, r_button = st.columns(2)
+            with l_button:
+                if st.button('Save Dataset and Retrained Model'):
+                    with st.spinner('Saving data and retraining model...'):
+                        file = {'file': ('uploaded_file', st.session_state['uploaded_file'])}
+                        save_result = make_request('POST', RETRAIN_SAVE_URL, files=file, params={'action':'save'})
+                        
+                        if save_result:
+                            st.success('Dataset and model saved successfully.')
+                        else:
+                            st.error('Failed to save updated model and dataset')
+            
+            with r_button:
+                if st.button('Reject Updates'):
+                    st.warning('Updates rejected. Original model and dataset preserved')            
 
 # ================================================================================================================================================================================================================================================================
 
