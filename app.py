@@ -78,39 +78,53 @@ def retrain():
     st.write(f'Upload a CSV file containing the latest climatic data\nRetrain the model and then compare the performance metrics')
 
     upload_file = st.file_uploader('Choose a CSV file to upload', type='csv')
-    file = {'file': ('new_data.csv', upload_file, 'text/csv')}
 
     if upload_file is not None:
-        st.write('File uploaded successfully. Click "Retrain & Evaluate"')
+        st.session_state['uploaded_file'] = upload_file
+        st.success('File uploaded successfully. Click "Retrain & Evaluate"')
 
         if st.button('Retrain & Evaluate'):
+            if 'uploaded_file' not in st.session_state:
+                st.error('No file uploaded. Please upload a CSV file first')
+                return
+            
+            file = {'file': ('uploaded_file', upload_file)}
+
             with st.spinner('Retraining model and evaluating...'):
                 result = make_request('POST', RETRAIN_SAVE_URL, files=file, params={'action':'evaluate'})
 
                 if result:
-                    st.success('Model retrained and evaluated')
-                    
-                    st.subheader('Evaluation Metrics')
-                    
-                    left_table, right_table = st.columns(2)
-                    with left_table:
-                        st.markdown('Current Model Metrics')
-                        st.dataframe(result['Current Evaluation Metrics'])
-                    
-                    with right_table:
-                        st.markdown('Updated Dataset Metrics')
-                        st.dataframe(result['New Evaluation Metrics'])
+                    st.session_state['current_metrics'] = result.get('Current Evaluation Metrics')
+                    st.session_state['new_metrics'] = result.get('New Evaluation Metrics')
+                    st.session_state['evaluation_complete'] = True
+                    st.success('Model retrained and evaluated successfully')
+                else:
+                    st.error('Failed to re-evaluate the model')
 
-                    if st.button('Save Dataset and Retrained Model'):
-                        with st.spinner('Saving data and retraining model...'):
-                            save_result = make_request('POST', RETRAIN_SAVE_URL, files=file, params={'action':'save'})
-                            if save_result:
-                                st.success('Dataset and model saved successfully.')
-                            else:
-                                st.error('Failed to save updated model and dataset')
+        if st.session_state.get('evaluation_complete'):
+            st.subheader('Evaluation Metrics')
+                    
+            left_table, right_table = st.columns(2)
+            with left_table:
+                st.markdown('Current Model Metrics')
+                st.dataframe(st.session_state['current_metrics'])
+                    
+            with right_table:
+                st.markdown('Updated Dataset Metrics')
+                st.dataframe(st.session_state['new_metrics'])
 
-                    elif st.button('Reject Updates'):
-                        st.warning('Updates rejected. Original model and dataset preserved')
+            if st.button('Save Dataset and Retrained Model'):
+                with st.spinner('Saving data and retraining model...'):
+                    file = {'file': ('uploaded_file', st.session_state['upload_file'])}
+                    save_result = make_request('POST', RETRAIN_SAVE_URL, files=file, params={'action':'save'})
+                    
+                    if save_result:
+                        st.success('Dataset and model saved successfully.')
+                    else:
+                        st.error('Failed to save updated model and dataset')
+
+        elif st.button('Reject Updates'):
+            st.warning('Updates rejected. Original model and dataset preserved')
 
 # ================================================================================================================================================================================================================================================================
 
