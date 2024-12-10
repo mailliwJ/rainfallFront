@@ -101,7 +101,7 @@ def retrain():
                         st.markdown('Updated Dataset Metrics')
                         st.dataframe(result['New Evaluation Metrics'])
 
-                    if st.button('Save Dataset and Retrain Model'):
+                    if st.button('Save Dataset and Retrained Model'):
                         with st.spinner('Saving data and retraining model...'):
                             save_result = make_request('PUT', RETRAIN_SAVE_URL, files=file)
                             if save_result:
