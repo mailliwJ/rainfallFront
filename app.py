@@ -76,7 +76,10 @@ def predict():
 
 def retrain():
     st.title('Update Training Data and Retrain Model')
-    st.write(f'Upload a CSV file containing the latest climatic data\nRetrain the model and then compare the performance metrics')
+    st.write('1. Upload a CSV file containing the latest climatic data and retrain the model.')
+    st.write('2. Compare the new performance metrics to the currently stored metrics.')
+    st.write('3. Choose whether to save the updated dataset and retrained model or keep what you had previously.')
+
 
     upload_file = st.file_uploader('Choose a CSV file to upload', type='csv')
 
