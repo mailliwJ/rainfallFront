@@ -121,7 +121,7 @@ def retrain():
                 return
 
             file = st.session_state['uploaded_file']
-            file = {'file': (file.name, file, 'text/csv')}
+            file = {'file': ('uploaded_file', st.session_state['uploaded_file'], 'text/csv')}
 
             with st.spinner('Retraining model and evaluating...'):
                 st.write('Sending file payload:', file)
