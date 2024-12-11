@@ -166,7 +166,8 @@ def retrain():
 def reset():
     st.title('Reset Model')
     st.markdown("""
-    If you wish to 'fatory reset' both the prediction model and the stored training datasets, click the button below.
+    If you wish to 'fatory reset' both the prediction model and the stored training datasets, click the button below.  
+                
     ***CAUTION!***:
     - This will reset the model and stored evaluation metrics.
     - Only click if you are sure you want to reset the application.   
