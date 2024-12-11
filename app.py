@@ -120,7 +120,7 @@ def retrain():
                 st.error('No file uploaded. Please upload a CSV file first')
                 return
             
-            file = {'file': ('uploaded_file', upload_file)}
+            file = {'file': upload_file}
 
             with st.spinner('Retraining model and evaluating...'):
                 result = make_request('POST', RETRAIN_SAVE_URL, files=file, params={'action':'evaluate'})
