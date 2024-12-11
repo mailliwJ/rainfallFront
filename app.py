@@ -119,6 +119,7 @@ def retrain():
             if 'uploaded_file' not in st.session_state:
                 st.error('No file uploaded. Please upload a CSV file first')
                 return
+                
             file = st.session_state['uploaded_file']
             file = {'file': (file.name, file, 'text/csv')}
 
