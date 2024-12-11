@@ -31,7 +31,7 @@ def make_request(method, url, **kwargs):
 st.set_page_config(layout='wide')
 
 def main():
-    menu = st.sidebar.radio('Menu', ['Home', 'Predict', 'Retrain Model', 'Reset'], index=0)
+    menu = st.sidebar.radio('Menu', ['Home', 'Predict', 'Retrain Model'], index=0)
 
     if menu == 'Home':
         home()
@@ -39,8 +39,6 @@ def main():
         predict()
     elif menu == 'Retrain Model':
         retrain()
-    """elif menu == 'Reset':
-        reset()"""
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -160,29 +158,6 @@ def retrain():
             
             elif st.button('Reject Updates'):
                 st.warning('Updates rejected. Original model and dataset preserved')            
-
-# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-"""def reset():
-    st.title('Reset Model')
-    st.markdown(
-    If you wish to 'fatory reset' both the prediction model and the stored training datasets, click the button below.  
-                
-    ***CAUTION!***:
-    - This will reset the model and stored evaluation metrics.
-    - Only click if you are sure you want to reset the application.   
-    )
-    if st.button('Reset Model and Dataset'):
-        delete_response = make_request('DELETE', DELETE_URL)
-        if delete_response:
-            st.success('Relevant files removed')
-        else:
-            st.error('Error removing files')
-        run_response = make_request('POST', RUN_URL) 
-        if run_response:
-            st.success('Model and dataset reset successfully')
-        else:
-            st.error('Error resetting model')"""
 
 # ================================================================================================================================================================================================================================================================
 
